@@ -1,0 +1,21 @@
+---
+import GithubIcon from "../icons/Github.astro";
+import LinkedInIcon from "../icons/LinkedIn.astro";
+import MailIcon from "../icons/Mail.astro";
+import SocialPill from "./SocialPill.astro";
+---
+
+<nav class="flex flex-row flex-wrap gap-4.5 mt-8">
+  <SocialPill href="https://www.linkedin.com/in/alejandro-arteaga-garc%C3%ADa-588415365/">
+    <LinkedInIcon class="size-4 md:size-6" />
+    LinkedIn
+  </SocialPill>
+  <SocialPill href="https://github.com/MusashiScripts">
+    <GithubIcon class="size-4 md:size-6" />
+    Github
+  </SocialPill>
+  <SocialPill href="mailto:alejarteaga2003@gmail.com">
+    <MailIcon class="size-4 md:size-6" />
+    alejarteaga2003@gmail.com
+  </SocialPill>
+</nav>

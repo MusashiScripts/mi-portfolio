@@ -1,0 +1,98 @@
+---
+import GithubIcon from "../icons/Github.astro"
+import LinkButton from "./LinkButton.astro"
+import LinkIcon from "../icons/LinkIcon.astro"
+import Nextjs from "../icons/NextJS.astro"
+import React from "../icons/React.astro"
+import Tailwind from "../icons/Tailwind.astro"
+import TypeScript from "../icons/TypeScript.astro"
+
+
+const TAGS = {
+  NEXT_JS: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: Nextjs
+  },
+  TAILWIND_CSS: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind
+  },
+  REACT: {
+    name: "React",
+    class: "bg-gray-900 text-white",
+    icon: React
+  },
+  TYPESCRIPT: {
+    name: "TypeScript",
+    class: "bg-slate-800 text-white",
+    icon: TypeScript
+  }
+}
+
+const PROJECTS = [
+  {
+    title: "Berserk Quiz Game",
+    description: "Clasico Juego de Preguntas sobre el popular manga Berserk con el objetivo de practicar Zustand como manejador de estado de React.",
+    link: "https://berserk-quiz-game.vercel.app/",
+    github: "https://github.com/MusashiScripts/berserk-quiz-game",
+    image: "./projects/berserk-quiz-game.webp",
+    tags: [TAGS.REACT, TAGS.TAILWIND_CSS, TAGS.TYPESCRIPT]
+  },
+  {
+    title: "CRUD using Redux",
+    description: "Clásico CRUD App usando Redux Toolkit por primera vez como metodo de practica para aprender sobre este manejador de estado de React.",
+    github: "https://github.com/MusashiScripts/crud-react-redux",
+    image: "/projects/crud-redux.png",
+    tags: [TAGS.REACT, TAGS.TAILWIND_CSS, TAGS.TYPESCRIPT]
+  },
+  {
+    title: "Weather App",
+    description: "Aplicacion sencilla para conocer el clima actual de cualquier ciudad del mundo, en tiempo real.",
+    link: "/",
+    github: "/#",
+    image: "/projects/weather-app.png",
+    tags: [TAGS.REACT, TAGS.TAILWIND_CSS]
+  }
+]
+---
+
+<section class="flex flex-col gap-y-16">
+{
+  PROJECTS.map(({title, description, link, github, image, tags})=> (
+    <article>
+      <h3 class="text-white/90 text-2xl font-semibold mb-2">{title}</h3>
+      <p class="text-white/90 text-lg mb-4 text-pretty">{description}</p>
+      <ul class="flex flex-row gap-x-2">
+        {
+          tags.map(tag => (
+            <li>
+              <span class={`${tag.class} flex gap-x-2 rounded-full text-xs justify-center items-center mb-4 py-1.5 px-2.5`}>
+              <tag.icon class="size-7" />
+              {tag.name}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+      <img class="rounded" src={image} alt={`Captura de pantalla del proyecto ${title}`} />
+      <footer class="flex flex-row justify-start gap-x-2 mt-3">
+        {
+          github && <LinkButton class="flex flex-row justify-center items-center gap-x-1" href={github}>
+          <GithubIcon class="size-7" />
+          Code
+        </LinkButton>
+        }
+        {
+          link && <LinkButton class="flex flex-row justify-center items-center gap-x-1" href={link}>
+          <LinkIcon class="size-7" />
+            Preview
+          </LinkButton>
+        }
+        
+      </footer>
+    </article>
+  ))
+}
+</section>

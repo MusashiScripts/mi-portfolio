@@ -1,0 +1,30 @@
+---
+import Badge from "./Badge.astro";
+import HeroLinks from "./HeroLinks.astro";
+---
+
+<div class="flex gap-x-4 items-center mb-4">
+  <img
+    class="size-15 rounded-full"
+    src="https://avatars.githubusercontent.com/u/182202069?v=4"
+    alt="Foto de perfil de Guthub"
+  />
+  <a
+    href="https://www.linkedin.com/in/alejandro-arteaga-garc%C3%ADa-588415365/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex justify-center items-center hover:scale-110 transition"
+  >
+    <Badge>Disponible para trabajar</Badge>
+  </a>
+</div>
+<h1
+  class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10"
+>
+  Hey, soy Alejandro
+</h1>
+<h2 class="text-white opacity-80 text-xl lg:text-2xl  text-pretty max-w-[700px]">
+  Estudiante de Ing Informatica / Computer Science. Programador y
+  desarrollador, Principal Frontend Engineer. De Artemisa, Cuba 🇨🇺. Autodidacta con gran capacidad de aprendizaje.
+</h2>
+<HeroLinks />
