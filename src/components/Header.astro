@@ -31,16 +31,16 @@ const navItems = [
 dark:w-full mx-auto mt-2">
 
   <nav class= "
-  bg-gray-200 dark:bg-black/80
+  bg-gray-200 dark:bg-black/70
   text-gray-800 dark:text-gray-200
   flex justify-center items-center gap-x-2 px-3 py-1.5 
-  text-sm font-medium rounded-full z-10
+  text-sm font-medium rounded-full
    ">
     {
       navItems.map((link) => (
         <a
           class="rounded-full relative block px-2 py-1 
-          hover:text-blue-500 transition"
+         text-blue-500 transition"
           aria-label={link.label}
           href={link.url}
           target={ link.url === "mailto:alejarteaga2003@gmail.com" ? "_blank" : null }
