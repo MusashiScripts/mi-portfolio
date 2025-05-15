@@ -4,7 +4,6 @@ import Header from '../components/Header.astro'
 import './src/styles/global.css'
 // Supports weights 100-900
 import '@fontsource-variable/onest';
-import { ClientRouter } from 'astro:transitions'; 
 
 ---
 
@@ -17,7 +16,6 @@ import { ClientRouter } from 'astro:transitions';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Portfolio de Alejandro</title>
-    <ClientRouter fallback="none"/>
 	</head>
 	<body class="relative">
     <!-- <div
