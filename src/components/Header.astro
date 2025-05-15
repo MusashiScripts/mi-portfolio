@@ -4,12 +4,12 @@
 const navItems = [
   {
     title: "Experiencia",
-    label: "experiencia",
+    label: "experience",
     url: "/#experience",
   },
   {
     title: "Proyectos",
-    label: "proyectos",
+    label: "projects",
     url: "/#projects",
   },
   {
@@ -19,27 +19,28 @@ const navItems = [
   },
   {
     title: "Contacto",
-    label: "contacto",
+    label: "contact",
     url: "mailto:alejarteaga2003@gmail.com",
   },
 ]
 
+/* bg-gray-200 dark:bg-black/70  */
 ---
 
 <header class="fixed top-0 z-10 flex justify-center items-center h-auto w-full 
 dark:w-full mx-auto mt-2">
 
   <nav class= "
-  bg-gray-200 dark:bg-black/70 
+  bg-gray-200 dark:bg-black/80
   text-gray-800 dark:text-gray-200
   flex justify-center items-center gap-x-2 px-3 py-1.5 
-  text-sm font-medium rounded-full
+  text-sm font-medium rounded-full z-10
    ">
     {
       navItems.map((link) => (
         <a
           class="rounded-full relative block px-2 py-1 
-          hover:bg-gray-400 dark:hover:bg-gray-700 transition"
+          hover:text-blue-500 transition"
           aria-label={link.label}
           href={link.url}
           target={ link.url === "mailto:alejarteaga2003@gmail.com" ? "_blank" : null }
@@ -52,65 +53,45 @@ dark:w-full mx-auto mt-2">
   </nav>
 </header>
 
-<!-- <script>
+<script>
   document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section")
-    const navItems = document.querySelectorAll("header nav a")
 
+    const sections = document.querySelectorAll('section')
+    const navItems = document.querySelectorAll('header nav a')
+  
     const callback = (entries: any[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-blue-500")
-            } else {
-              item.classList.remove("text-blue-500")
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          navItems.forEach(item => {
+            if(item.getAttribute('aria-label') == entry.target.id){
+              item.classList.add('text-blue-500')
+            }else{
+              item.classList.remove('text-blue-500')
             }
           })
         }
       })
     }
-
+  
     const observer = new IntersectionObserver(callback, {
       root: null,
-      rootMargin: "0px",
-      threshold: 0.3,
+      rootMargin: '0px',
+      threshold: 0.2
     })
-
-    sections.forEach((section) => {
-      observer.observe(section)
-    })
-
+  
+    sections.forEach(section => observer.observe(section))
+  
     // Cleanup function
     document.onvisibilitychange = () => {
-      if (document.visibilityState === "hidden") {
-        observer.disconnect()
-      } else {
-        sections.forEach((section) => {
-          observer.observe(section)
-        })
+        if (document.visibilityState === "hidden") {
+          observer.disconnect()
+        } else {
+          sections.forEach((section) => {
+            observer.observe(section)
+          })
+        }
       }
-    }
+
   })
+
 </script>
-
-<style>
-  nav {
-    animation: nav-shadown 1s linear both;
-    animation-timeline: scroll();
-    animation-range: 0 100px;
-  }
-
-  nav {
-    @apply dark:bg-gray-800/90 bg-white/50;
-  }
-
-  @keyframes nav-shadown {
-    0% {
-      @apply dark:bg-gray-800/0 bg-white/0;
-    }
-    to {
-      @apply shadow-lg ring-1 backdrop-blur ring-white/10;
-    }
-  }
-</style> -->

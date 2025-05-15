@@ -58,10 +58,10 @@ const PROJECTS = [
 ]
 ---
 
-<section class="flex flex-col gap-y-16">
+<article class="flex flex-col gap-y-16">
 {
   PROJECTS.map(({title, description, link, github, image, tags})=> (
-    <article>
+    <div>
       <h3 class="text-white/90 text-2xl font-semibold mb-2">{title}</h3>
       <p class="text-white/90 text-lg mb-4 text-pretty">{description}</p>
       <ul class="flex flex-row gap-x-2">
@@ -92,7 +92,7 @@ const PROJECTS = [
         }
         
       </footer>
-    </article>
+    </div>
   ))
 }
-</section>
+</article>
