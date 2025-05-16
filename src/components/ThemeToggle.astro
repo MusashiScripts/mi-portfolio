@@ -61,25 +61,32 @@ const THEMES = ["Light", "Dark", "System"]
 
 <script is:inline>
   let remove = null
-  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)")
-  const themesMenu = document.getElementById("themes-menu")
+  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
+  const themesMenu = document.getElementById('themes-menu')
+
+  /* Obtener el theme preference del local Storage si existe, y sino
+  se comprueba mediante el window.matchmedia().matches */
 
   const getThemePreference = () => {
     if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("theme") ?? "system"
+      return localStorage.getItem('theme') ?? "system"
     }
-
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light"
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light'
   }
 
+  
+
+  //Actualizar el icono
   const updateIcon = (themePreference) => {
-    document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
-      element.style.scale = element.id === themePreference ? "1" : "0"
+    const themeIcons = document.querySelectorAll('.theme-toggle-icon')
+    themeIcons.forEach(icon => {
+      icon.getAttribute('id') === themePreference ? icon.style.scale = 1 : icon.style.scale = 0
     })
   }
 
+  //Update Theme
   const updateTheme = () => {
     if (remove != null) {
       remove()
@@ -88,7 +95,7 @@ const THEMES = ["Light", "Dark", "System"]
     remove = () => {
       matchMedia.removeEventListener("change", updateTheme)
     }
-
+    
     const themePreference = getThemePreference()
     const isDark =
       themePreference === "dark" ||
@@ -99,18 +106,24 @@ const THEMES = ["Light", "Dark", "System"]
   }
 
   updateTheme()
-
-  document.addEventListener("click", () => themesMenu.classList.remove("open"))
-
-  document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
+  
+  //Mostrar el menu haciendo click al button
+  const menuButton = document.getElementById('theme-toggle-btn')
+  menuButton.addEventListener('click', (e) => {
     e.stopPropagation()
-    const isClosed = !themesMenu.classList.contains("open")
-    themesMenu.classList[isClosed ? "add" : "remove"]("open")
+    !themesMenu.classList.contains('open') 
+    ? themesMenu.classList.add('open') 
+    : themesMenu.classList.remove('open') 
   })
 
-  document.querySelectorAll(".themes-menu-option").forEach((element) => {
-    element.addEventListener("click", (e) => {
-      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim())
+  //Cerrar el menu al hacer click fuera de él
+  document.addEventListener("click", () => themesMenu.classList.remove("open"))
+
+  //Dandole funcionalidad a las opciones del menu
+  const menuOptions = document.querySelectorAll('.themes-menu-option')
+  menuOptions.forEach(option => {
+    option.addEventListener('click', (e) => {
+      localStorage.setItem('theme', e.target.textContent.toLowerCase().trim())
       updateTheme()
     })
   })
@@ -119,4 +132,6 @@ const THEMES = ["Light", "Dark", "System"]
     updateTheme();
     window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
   })
+  
+
 </script>
