@@ -5,6 +5,8 @@ import './src/styles/global.css'
 // Supports weights 100-900
 import '@fontsource-variable/onest';
 import { ClientRouter } from 'astro:transitions';
+
+const { title } = Astro.props
 ---
 
 <!doctype html>
@@ -15,7 +17,7 @@ import { ClientRouter } from 'astro:transitions';
     <meta name="description" content="Portfolio de la cabra">
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Portfolio de Alejandro</title>
+		<title>{title}</title>
     <ClientRouter fallback="none"/>
 	</head>
 	<body class="relative">
