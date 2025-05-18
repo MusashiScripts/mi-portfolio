@@ -57,7 +57,7 @@ dark:w-full mx-auto mt-2">
   document.addEventListener("astro:page-load", () => {
 
     const sections = document.querySelectorAll('section')
-    const navItems = document.querySelectorAll('header nav a')
+    const navItems = document.querySelectorAll('header > nav > a')
   
     const callback = (entries: any[]) => {
       entries.forEach(entry => {
