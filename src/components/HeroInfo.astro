@@ -28,3 +28,28 @@ import HeroLinks from "./HeroLinks.astro";
   desarrollador, Principal Frontend Engineer. De Artemisa, Cuba 🇨🇺. Autodidacta con gran capacidad de aprendizaje.
 </h2>
 <HeroLinks />
+
+<style is:inline>
+  
+  #hero-info{
+    animation: zoom-in .8s ease both;
+  }
+
+  @keyframes zoom-in {
+    from{
+      opacity: 0;
+      scale: 0.5
+    }
+    
+    to{
+      opacity: 1;
+      scale: 1
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+        #hero-info {
+          animation: none;
+        }
+      }
+</style>
